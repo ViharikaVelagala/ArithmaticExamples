@@ -20,8 +20,9 @@ public class Arithmaticoperations {
 
 	public static void main(String args[]) {
 		Arithmaticoperations a1 = new Arithmaticoperations();
-		int a = 20;
-		int b = 2;
+		
+		int a = Integer.parseInt(args[0]);
+		int b = Integer.parseInt(args[1]);
 		System.out.println("Addition of two numbers" + a1.Addition(a, b));
 		System.out.println("Subtraction of two numbers" + a1.Subtraction(a, b));
 		System.out.println("Multiplication of two numbers" + a1.Multiplication(a, b));
