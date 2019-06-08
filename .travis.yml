@@ -43,7 +43,7 @@ before_script:
 script:
   - mvn --batch-mode --show-version clean test package
   
-  deploy:
+deploy:
   - provider: script
     script: bash ci/deploy.sh dev ${TRAVIS_BUILD_NUMBER}
     skip_cleanup: true
