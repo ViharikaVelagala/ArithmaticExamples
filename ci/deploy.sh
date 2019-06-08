@@ -7,6 +7,7 @@ CLASS_NAME="com.examples.Arithmaticoperations"
 
 if [ ${env} = "dev" ] || [ ${env} = "staging" ] || [ ${env} = "prod" ]; then 
     java -cp ${JAR_NAME} ${CLASS_NAME} 3 4
+    aws s3 cp ${JAR_NAME} s3://hadoop-dev-bucket/ArithmaticExamples-${version}.jar
 else 
     echo "Invalid Environment"
 	exit 1
