@@ -1,8 +1,7 @@
 # project language 
 language: java
 
-jdk:
-  - oraclejdk8
+jdk: oraclejdk8
   
 sudo: enabled
 
@@ -15,4 +14,4 @@ branches:
   - develop\d+.*$/
   
 script:
-  - mvn clean test package
+  - ./mvnw clean test package
