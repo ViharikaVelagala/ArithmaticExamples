@@ -42,3 +42,23 @@ before_script:
 # If tests pass, publish Docker image (note that we do this here because we want a failed Docker image publish to fail the entire build)
 script:
   - mvn --batch-mode --show-version clean test package
+  
+  deploy:
+  - provider: script
+    script: bash ci/deploy.sh dev ${TRAVIS_BUILD_NUMBER}
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^(develop[0-9]+.*)$
+  - provider: script
+    script: bash ci/deploy.sh staging ${TRAVIS_BUILD_NUMBER}
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH == master
+  - provider: script
+    script: bash ci/deploy.sh prod ${TRAVIS_BUILD_NUMBER}
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH == release
